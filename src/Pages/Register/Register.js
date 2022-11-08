@@ -1,11 +1,16 @@
-import React, { useContext } from 'react'
-import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
+import React, { useContext, useState } from 'react'
+import { Button, Card, Label, TextInput } from "flowbite-react";
 import { authProvider } from '../../contextApi/UserContext';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Register = () => {
-  const{createUser} = useContext(authProvider)
+  const [error,setError] = useState('')
+  const{createUser,updateUser} = useContext(authProvider)
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
+  const navigate = useNavigate()
   const handleRegister = (e)=>{
+   
     e.preventDefault()
     const form = e.target;
     const name = form.name.value;
@@ -13,12 +18,29 @@ const Register = () => {
     const email = form.email.value;
     const password = form.password.value;
 
+    if(password.length < 6){
+      setError('Password should be more than 6 characters')
+    }
+
     createUser(email,password)
     .then(result =>{
       console.log(result.user)
+      updateUserProfile(name,photo)
+      navigate(from,{replace:true})
+
     })
     .catch(e => console.error(e))
 
+  }
+
+  const updateUserProfile =(name,photo)=>{
+    const profile = {
+      displayName:name,
+      photoURL:photo
+    }
+    updateUser(profile)
+    .then(result => console.log(result.user))
+    .catch(e => console.error(e))
   }
   return (
     <div className=" w-full flex justify-center mt-20">
@@ -68,10 +90,7 @@ const Register = () => {
             </div>
             <TextInput id="password1" type="password" name="password" required={true} />
           </div>
-          {/* <div className="flex items-center gap-2">
-            <Checkbox id="remember" />
-            <Label htmlFor="remember">Show Password</Label>
-          </div> */}
+          <p className='text-red-700'>{error}</p>
           <Button type="submit">Register</Button>
           <small>Already have an account?<Link to='/login'>Login</Link></small>
         </form>

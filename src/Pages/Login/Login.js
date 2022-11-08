@@ -1,22 +1,37 @@
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
-import React, { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authProvider } from "../../contextApi/UserContext";
+import GoogleLogin from "../../Shared/Social_login/GoogleLogin";
+import { saveToken } from "../../Shared/Utilities/saveToken";
 
 const Login = () => {
+  const [error,setError] = useState('')
+  const [show,setShow] = useState(false)
   const {userLogin} = useContext(authProvider)
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
   const navigate = useNavigate()
   const handleLogin = (e)=>{
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+
      
     userLogin(email,password)
     .then(result => {
-      navigate('/')
+      const currentUser = {
+        email : result.user.email
+      }
+
+     saveToken(currentUser,from,navigate)
+      
     })
-    .catch(e => console.error(e))
+    .catch(e => {
+      console.error(e)
+      setError('Invalid Email or Password')
+    })
   }
   return (
     <div className=" w-full flex justify-center mt-20">
@@ -40,15 +55,18 @@ const Login = () => {
             <div className="mb-2 block">
               <Label htmlFor="password1" value="Your password" />
             </div>
-            <TextInput id="password1" type="password" name="password" required={true} />
+            <TextInput id="password1" type={show? 'text': 'password'} name="password" required={true} />
+            <p className="text-red-700">{error}</p>
           </div>
           <div className="flex items-center gap-2">
-            <Checkbox id="remember" />
+            <Checkbox onClick={()=>setShow(!show)} id="remember" />
             <Label htmlFor="remember">Show Password</Label>
           </div>
           <Button type="submit">Login</Button>
           <small>New to this website?<Link to='/register'>Register</Link></small>
+
         </form>
+        <GoogleLogin/>
       </Card>
     </div>
   );
