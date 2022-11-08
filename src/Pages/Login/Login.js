@@ -1,15 +1,22 @@
 import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { authProvider } from "../../contextApi/UserContext";
 
 const Login = () => {
+  const {userLogin} = useContext(authProvider)
+  const navigate = useNavigate()
   const handleLogin = (e)=>{
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-
-    console.log(email,password)
+     
+    userLogin(email,password)
+    .then(result => {
+      navigate('/')
+    })
+    .catch(e => console.error(e))
   }
   return (
     <div className=" w-full flex justify-center mt-20">

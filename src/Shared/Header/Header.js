@@ -1,8 +1,10 @@
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { authProvider } from "../../contextApi/UserContext";
 
 const Header = () => {
+  const {user} = useContext(authProvider)
   return (
     <div>
       <Navbar className="flex justify-between w-full">
@@ -46,6 +48,7 @@ const Header = () => {
           <NavLink to='/services'>Services</NavLink>
           <NavLink to= '/blog'>Blog</NavLink>
           <NavLink to= "/contact">Contact</NavLink>
+          <NavLink >{user?.name}</NavLink>
         </Navbar.Collapse>
       </Navbar>
     </div>
