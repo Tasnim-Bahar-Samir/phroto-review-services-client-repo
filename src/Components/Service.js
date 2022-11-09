@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import 'react-photo-view/dist/react-photo-view.css';
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const Service = ({ data }) => {
   const { _id, img, details, name, price } = data;
@@ -8,7 +10,11 @@ const Service = ({ data }) => {
   return (
     <div className="max-w-lg md:h-76 p-2 border rounded-tl-2xl rounded-tr-2xl hover:shadow-lg">
       <div className="">
-        <img src={img} alt="" className="rounded-xl mb-2 md:h-44 w-full " />
+        <PhotoProvider>
+          <PhotoView src={img}>
+          <img src={img} alt="" className="rounded-xl mb-2 md:h-44 w-full " />
+          </PhotoView>
+        </PhotoProvider>
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white mb-3">
           {name}
         </h5>

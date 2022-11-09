@@ -87,7 +87,7 @@ const ServiceDetails = () => {
         <div className="mt-24 my-16 mx-auto">
           <h2 className="text-2xl font-semibold mb-2">What Clients say about my servie:</h2>
         {
-          reviews.length > 1 ?
+          reviews.length > 0 ?
           reviews.map(review => <Review review = {review} key={review._id}/>)
           :
           <h3 className="text-xl ">No Reviews To Show</h3>

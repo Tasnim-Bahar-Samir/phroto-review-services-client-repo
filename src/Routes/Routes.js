@@ -41,7 +41,7 @@ export const router = createBrowserRouter([
                 element:<ServiceDetails/>
             },
             {
-                path:'/my_reviews',
+                path:'/myReviews',
                 element:<Myreviwes/>
             }
         ]
