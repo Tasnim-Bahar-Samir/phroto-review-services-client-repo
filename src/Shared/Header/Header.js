@@ -30,7 +30,7 @@ const Header = () => {
             </span>
           </Link>
         </Navbar.Brand>
-        <div className="flex md:order-2">
+        <div className="flex  md:order-2">
           {
             user?.email?
             <Dropdown 

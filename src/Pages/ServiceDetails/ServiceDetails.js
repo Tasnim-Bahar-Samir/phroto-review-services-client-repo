@@ -70,7 +70,7 @@ const ServiceDetails = () => {
       <div className="text-center">
         <ModalShow visible = {visible} setVisible = {setVisible}/>
         <img src={img} className="w-full rounded-xl mt-10 mb-4" alt="" />
-        <div className="flex justify-between mx-8">
+        <div className="flex justify-between mx-auto mb-2">
           <h5 className="text-2xl font-semibold">{name}</h5>
           <h3 className="flex items-center">
             <FaStar className=" text-yellow-400" />
@@ -84,7 +84,7 @@ const ServiceDetails = () => {
 
       {/* reviews */}
 
-        <div className="mt-24">
+        <div className="mt-24 my-16 mx-auto">
           <h2 className="text-2xl font-semibold mb-2">What Clients say about my servie:</h2>
         {
           reviews.length > 1 ?
@@ -96,7 +96,7 @@ const ServiceDetails = () => {
 
 
       {/* add review */}
-      <div className=" my-16">
+      <div className=" my-16 mx-auto">
         <h2 className="text-2xl font-semibold mb-2">Leave a feedback</h2>
         <form  onSubmit={handleAddReview}>
           <textarea
