@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Service from '../../Components/Service'
+import About from './About/About'
+import Banner from './Banner/Banner'
 
 const Home = () => {
   const [services,setServices] = useState([])
@@ -13,9 +15,11 @@ const Home = () => {
  console.log(services)
   return (
     <div>
-      
+      <div className='mb-10'>
+        <Banner/>
+      </div>
       <div className='text-center'>
-        <h2 className='text-2xl text-center'>Services</h2>
+        <h2 className='text-2xl text-center my-3'>Services</h2>
          <div className='grid md:grid-cols-3 gap-4'>
           {
             services.map(service => <Service key={service._id} data = {service}/>)
@@ -23,6 +27,10 @@ const Home = () => {
           
          </div>
          <button className="px-3 py-2 bg-slate-900 text-white mt-5"><Link to='/services'>More Services</Link></button>
+      </div>
+      <div className='mt-24 mb-52'>
+        <h4 className='text-center text-xl text-red-800 mb-2 font-semibold'>About Me</h4>
+        <About/>
       </div>
     </div>
   )
