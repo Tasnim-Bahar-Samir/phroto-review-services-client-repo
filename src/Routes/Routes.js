@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import EditReview from "../Components/EditReview";
 import Main from "../Layouts/Main";
 import Blog from "../Pages/Blog/Blog";
 import Error from "../Pages/Error/Error";
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
             {
                 path:'/myReviews',
                 element:<Myreviwes/>
+            },
+            {
+                path:'/myReviews/edit/:id',
+                element:<EditReview/>
             }
         ]
     }

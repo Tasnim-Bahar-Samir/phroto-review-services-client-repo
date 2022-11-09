@@ -8,7 +8,7 @@ const Service = ({ data }) => {
   const { _id, img, details, name, price } = data;
 
   return (
-    <div className="max-w-lg md:h-76 p-2 border rounded-tl-2xl rounded-tr-2xl hover:shadow-lg">
+    <div className="max-w-lg md:h-76 lg:h p-2 border rounded-tl-2xl rounded-tr-2xl hover:shadow-lg">
       <div className="">
         <PhotoProvider>
           <PhotoView src={img}>

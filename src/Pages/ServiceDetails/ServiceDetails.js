@@ -29,6 +29,7 @@ const ServiceDetails = () => {
   
 
   const handleAddReview = (e) => {
+    const datefield = new Date()
     e.preventDefault()
     const reveiw = {
       email : user?.email,
@@ -38,6 +39,7 @@ const ServiceDetails = () => {
       serviceName:name,
       serviceId : _id,
       rating:star,
+      datefield:datefield
     }
     console.log(reveiw)
     user?.email ?
@@ -85,7 +87,7 @@ const ServiceDetails = () => {
       {/* reviews */}
 
         <div className="mt-24 my-16 mx-auto">
-          <h2 className="text-2xl font-semibold mb-2">What Clients say about my servie:</h2>
+          <h2 className="text-2xl font-semibold mb-2">What Clients say about my service:</h2>
         {
           reviews.length > 0 ?
           reviews.map(review => <Review review = {review} key={review._id}/>)

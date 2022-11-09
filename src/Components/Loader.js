@@ -3,7 +3,7 @@ import React from "react";
 
 const Loader = () => {
   return (
-    <div>
+    <div className="flex mt-10 justify-center">
       <Spinner color="success" aria-label="Success spinner example" />
     </div>
   );

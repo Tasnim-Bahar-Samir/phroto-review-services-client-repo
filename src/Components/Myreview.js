@@ -1,5 +1,6 @@
 import { Dropdown, Table } from "flowbite-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Myreview = ({ data,handleDelete }) => {
   const { _id,serviceName, text, rating } = data;
@@ -14,7 +15,7 @@ const Myreview = ({ data,handleDelete }) => {
       <Table.Cell>{rating}</Table.Cell>
       <Table.Cell>
         <Dropdown label="actions" arrowIcon={false}>
-          <Dropdown.Item>Edit</Dropdown.Item>
+          <Dropdown.Item><Link to={`/myReviews/edit/${_id}`}>Edit</Link></Dropdown.Item>
           <Dropdown.Item onClick={() => handleDelete(_id)}>Delete</Dropdown.Item>
         </Dropdown>
       </Table.Cell>
