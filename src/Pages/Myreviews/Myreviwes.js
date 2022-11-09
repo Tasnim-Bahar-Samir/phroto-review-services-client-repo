@@ -9,7 +9,11 @@ const Myreviwes = () => {
   const [reviews, setReviews] = useState([]);
   const [refresh,setRefresh] = useState(false)
   useEffect(() => {
-    fetch(`http://localhost:5000/myReviews?email=${user?.email}`)
+    fetch(`http://localhost:5000/myReviews?email=${user?.email}`,{
+        headers:{
+            authorization : localStorage.getItem('user_token')
+        }
+    })
       .then((res) => res.json())
       .then((data) => setReviews(data.data));
   }, [user?.email,refresh]);
