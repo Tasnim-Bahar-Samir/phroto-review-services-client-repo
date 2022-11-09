@@ -34,16 +34,17 @@ const Login = () => {
     })
   }
   return (
-    <div className=" w-full flex justify-center mt-20">
+    <div className=" w-full flex justify-center mt-10">
       
-      <Card className=" md:w-96 text-left">
-      <h3 className="text-2xl my-4">Login</h3>
+      <Card className=" md:w-[500px] w-96 text-left">
+      <h3 className="text-2xl my-4 text-center text-red-800">Login</h3>
         <form onSubmit={handleLogin} className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
               <Label htmlFor="email1" value="Your email" />
             </div>
             <TextInput
+              className="border-hidden"
               id="email1"
               type="email"
               placeholder="Email"
@@ -62,9 +63,11 @@ const Login = () => {
             <Checkbox onClick={()=>setShow(!show)} id="remember" />
             <Label htmlFor="remember">Show Password</Label>
           </div>
-          <Button type="submit">Login</Button>
-          <small>New to this website?<Link to='/register'>Register</Link></small>
-
+          <button type="submit" className="w-full bg-red-800 text-white p-2 rounded-sm">Login</button>
+          <small>New to this website?<Link to='/register'><span className="text-red-800">Register</span></Link></small>
+          <div className="text-center my-2">
+          <span>or <hr/></span>
+          </div>
         </form>
         <GoogleLogin/>
       </Card>

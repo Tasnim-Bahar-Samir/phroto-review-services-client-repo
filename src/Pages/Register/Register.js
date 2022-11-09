@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import { authProvider } from '../../contextApi/UserContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import GoogleLogin from '../../Shared/Social_login/GoogleLogin';
 
 const Register = () => {
   const [error,setError] = useState('')
@@ -43,10 +44,10 @@ const Register = () => {
     .catch(e => console.error(e))
   }
   return (
-    <div className=" w-full flex justify-center mt-20">
+    <div className=" w-full flex justify-center my-10">
       
-      <Card className="w-96 text-left">
-      <h3 className="text-2xl my-4">Register</h3>
+      <Card className="md:w-[500px] w-96 text-left">
+      <h3 className="text-2xl my-4 text-center text-red-800">Register</h3>
         <form onSubmit={handleRegister} className="flex flex-col gap-4">
           <div>
             <div className="mb-2 block">
@@ -91,9 +92,13 @@ const Register = () => {
             <TextInput id="password1" type="password" name="password" required={true} />
           </div>
           <p className='text-red-700'>{error}</p>
-          <Button type="submit">Register</Button>
-          <small>Already have an account?<Link to='/login'>Login</Link></small>
+          <button className='w-full bg-red-800 text-white p-2 rounded-sm' type="submit">Register</button>
+          <small>Already have an account?<Link to='/login'><span className='text-red-800'>Login</span></Link></small>
+          <div className="text-center my-2">
+          <span>or <hr/></span>
+          </div>
         </form>
+        <GoogleLogin/>
       </Card>
     </div>
   )

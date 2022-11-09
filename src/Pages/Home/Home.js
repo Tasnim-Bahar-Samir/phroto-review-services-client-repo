@@ -19,7 +19,7 @@ const Home = () => {
         <Banner/>
       </div>
       <div className='text-center'>
-        <h2 className='text-2xl text-center my-3'>Services</h2>
+        <h2 className='text-2xl text-center text-red-800 my-3'>Services</h2>
          <div className='grid md:grid-cols-3 gap-4'>
           {
             services.map(service => <Service key={service._id} data = {service}/>)
@@ -31,6 +31,9 @@ const Home = () => {
       <div className='mt-24 mb-52'>
         <h4 className='text-center text-xl text-red-800 mb-2 font-semibold'>About Me</h4>
         <About/>
+      </div>
+      <div>
+        
       </div>
     </div>
   )

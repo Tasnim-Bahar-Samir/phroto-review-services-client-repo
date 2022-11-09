@@ -3,7 +3,7 @@ import "./Banner.css";
 const Banner = () => {
   return (
     <div className="banner text-white flex items-center">
-      <div className="ml-10">
+      <div className="ml-10 xl:ml-16">
         <h1 className="md:text-6xl text-3xl font-bold">
           <span className=" text-red-700">Capture </span> All The <br /> Best Experiences
         </h1>

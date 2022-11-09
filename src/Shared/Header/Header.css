@@ -1,0 +1,9 @@
+.active{
+    color: brown;
+}
+ a{
+    transition: .5s;
+ }
+a:hover{
+    color: brown;
+}

@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { authProvider } from "../../contextApi/UserContext";
 import logo from "../../assets/images/logo.jpg"
+import './Header.css'
 
 const Header = () => {
   const {user,userLogOut} = useContext(authProvider)
@@ -20,14 +21,14 @@ const Header = () => {
       <Navbar className="" fluid={true}>
       
         <Navbar.Brand>
-          <Link to='/' className="flex items-center">
+          <Link to='/' className="flex items-center ">
             <img
               src={logo}
-              className="mr-3 h-6 sm:h-9"
+              className="mr-3 h-6 sm:h-9 bg-white"
               alt="Logo"
             />
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Photography
+            <span className="self-center whitespace-nowrap text-xl font-bold text-red-700">
+              Phroto.
             </span>
           </Link>
         </Navbar.Brand>
@@ -51,7 +52,7 @@ const Header = () => {
                 {user?.email}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item><Link to='/myReviews'>My Reviews</Link></Dropdown.Item>
+            
             <Dropdown.Divider />
             <Dropdown.Item onClick={handleLogout}>Sign out</Dropdown.Item>
           </Dropdown>
@@ -65,8 +66,13 @@ const Header = () => {
         <Navbar.Collapse>
           <NavLink to='/services'>Services</NavLink>
           <NavLink to= '/blog'>Blog</NavLink>
-          <NavLink to= "/contact">Contact</NavLink>
-          <NavLink >{user?.name}</NavLink>
+          {
+            user?.email && 
+            <>
+              <NavLink to='addService'>Add Service</NavLink>
+            <NavLink to='/myReviews'>My Reviews</NavLink>
+            </>
+          }
         </Navbar.Collapse>
       </Navbar>
     </div>
