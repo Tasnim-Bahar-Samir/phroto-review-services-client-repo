@@ -42,7 +42,7 @@ const AddService = () => {
             <br />
             <input className='w-full mb-2 rounded-md' name='img' placeholder='Photo url' type="text" />
             <br />
-           <div className='flex gap-6'>
+           <div className='md:flex gap-6'>
             <input name='rating'  type="text" placeholder='Rating'/>
             <input name='price' type="text" placeholder='Price' />
            </div>
