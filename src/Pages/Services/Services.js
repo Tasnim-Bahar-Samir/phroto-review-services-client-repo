@@ -20,7 +20,7 @@ const Services = () => {
       <Helmet>
         <title>Services</title>
       </Helmet>
-      <h3 className="text-center text-4xl my-3 text-red-800">All Services</h3>
+      <h3 className="text-center text-4xl mt-10 mb-8 text-red-800">All Services</h3>
       {loading && <Loader />}
       <div className="grid grid-cols-2 gap-5 my-10 w-full justify-center lg:grid-cols-3">
         {services.map((service) => (

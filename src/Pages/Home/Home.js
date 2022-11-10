@@ -5,6 +5,7 @@ import Service from "../../Components/Service";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
 import RecentWork from "./RecentWork/RecentWork";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const [services, setServices] = useState([]);
@@ -29,15 +30,18 @@ const Home = () => {
         <Banner />
       </div>
       <div className="text-center">
-        <h2 className="text-2xl text-center text-red-800 my-3">Services</h2>
+        <h2 className="text-2xl text-center text-red-800 mt-16 mb-5">Services</h2>
         <div className="grid md:grid-cols-2 lg:grid-cols-3  gap-4 mx-auto">
           {services.map((service) => (
             <Service key={service._id} data={service} />
           ))}
         </div>
-        <button className="px-3 py-2 bg-slate-900 text-white mt-5 hover:text-white">
+        <motion.button className="px-3 py-2 bg-slate-900 text-white mt-5 hover:text-white"
+        whileHover={{scale:1.1}}
+        transition = {{duration:.3}}
+        >
           <Link to="/services">More Services</Link>
-        </button>
+        </motion.button>
       </div>
 
       {/* about section  */}

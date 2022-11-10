@@ -28,7 +28,7 @@ const Myreviwes = () => {
       .then((data) => {
         console.log(data)
         setReviews(data.data)
-        setLoading(false)
+        setLoading(false);
       })
       .catch(e => console.log(e))
   }, [user?.email,refresh])
@@ -73,6 +73,7 @@ const Myreviwes = () => {
           </Table.Body>
         </Table>
         :
+        !loading&&
         <div className="flex justify-center h-60 items-center"><p>You have not added any reviws</p></div>
         }
         

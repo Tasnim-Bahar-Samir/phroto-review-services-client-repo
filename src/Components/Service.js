@@ -3,12 +3,19 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import 'react-photo-view/dist/react-photo-view.css';
 import { PhotoProvider, PhotoView } from "react-photo-view";
+import { motion } from "framer-motion";
 
 const Service = ({ data }) => {
   const { _id, img, details, name, price } = data;
 
   return (
-    <div className="max-w-lg md:h-76 lg:h p-2 border rounded-xl bg-white rounded-tr-2xl hover:shadow-lg">
+    <motion.div className="max-w-lg md:h-76 lg:h p-2 border rounded-xl bg-white rounded-tr-2xl"
+    
+    whileHover={{y:-10}}
+    transition = {{duration:.5}}
+    initial = {{y: 100 ,opacity:.5}}
+    whileInView = {{y:0 , opacity:1}}
+    >
       
       <div className="text-center">
         <PhotoProvider>
@@ -32,7 +39,7 @@ const Service = ({ data }) => {
           </Link>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
