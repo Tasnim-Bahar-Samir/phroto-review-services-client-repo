@@ -2,6 +2,7 @@ import { Table } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
+import Loader from "../../Components/Loader";
 import Myreview from "../../Components/Myreview";
 import { authProvider } from "../../contextApi/UserContext";
 
@@ -10,7 +11,9 @@ const Myreviwes = () => {
   const { user } = useContext(authProvider);
   const [reviews, setReviews] = useState([]);
   const [refresh,setRefresh] = useState(false)
+  const [loading,setLoading] = useState(false)
   useEffect(() => {
+    setLoading(true)
     fetch(`https://awesome-photography-server.vercel.app/myReviews?email=${user?.email}`,{
         headers:{
             authorization : localStorage.getItem('user_token')
@@ -25,7 +28,7 @@ const Myreviwes = () => {
       .then((data) => {
         console.log(data)
         setReviews(data.data)
-        
+        setLoading(false)
       })
       .catch(e => console.log(e))
   }, [user?.email,refresh])
@@ -46,7 +49,8 @@ const Myreviwes = () => {
     .catch(e => console.log(e))
   }
   return (
-      <div className="mt-20 bg-white rounded-lg p-10">
+      <div className="mt-20 bg-white my-16 rounded-lg p-10">
+        {loading && <Loader/>}
         <Helmet>
           <title>My_Reviews</title>
         </Helmet>
