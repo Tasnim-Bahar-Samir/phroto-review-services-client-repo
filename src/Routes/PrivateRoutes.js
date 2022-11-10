@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
+import Loader from '../Components/Loader';
 import { authProvider } from '../contextApi/UserContext'
 
 
 const PrivateRoutes = ({children}) => {
-    const location = useLocation;
-    const {user,loading} = useState(authProvider)
+    const location = useLocation();
+    const {user,loading} = useContext(authProvider)
     if(loading){
         
-        return <p>loading...</p>
+        return <Loader/>
     }
 
-    if(user?.uid){
+    if(user){
         return children
     }
     

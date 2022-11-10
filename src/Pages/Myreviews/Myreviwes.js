@@ -1,5 +1,6 @@
 import { Table } from "flowbite-react";
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import Myreview from "../../Components/Myreview";
 import { authProvider } from "../../contextApi/UserContext";
@@ -35,7 +36,12 @@ const Myreviwes = () => {
   }
   return (
       <div className="mt-20 bg-white rounded-lg p-10">
-        <Table>
+        <Helmet>
+          <title>My_Reviews</title>
+        </Helmet>
+        {
+          reviews.length > 0?
+          <Table>
           <Table.Head>
             <Table.HeadCell>Service name</Table.HeadCell>
             <Table.HeadCell>Review</Table.HeadCell>
@@ -51,6 +57,9 @@ const Myreviwes = () => {
             }
           </Table.Body>
         </Table>
+        :
+        <div className="flex justify-center h-60 items-center"><p>You have not added any reviws</p></div>
+        }
         
       </div>
   );

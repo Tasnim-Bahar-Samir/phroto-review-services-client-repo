@@ -1,11 +1,14 @@
-import { Button, Card, Checkbox, Label, TextInput } from "flowbite-react";
+import { Card, Checkbox, Label, TextInput } from "flowbite-react";
 import React, { useContext, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Loader from "../../Components/Loader";
 import { authProvider } from "../../contextApi/UserContext";
 import GoogleLogin from "../../Shared/Social_login/GoogleLogin";
 import { saveToken } from "../../Shared/Utilities/saveToken";
 
 const Login = () => {
+  const [loading,setLoading] = useState(false)
   const [error,setError] = useState('')
   const [show,setShow] = useState(false)
   const {userLogin} = useContext(authProvider)
@@ -21,11 +24,13 @@ const Login = () => {
      
     userLogin(email,password)
     .then(result => {
+      setLoading(true)
       const currentUser = {
         email : result.user.email
       }
 
      saveToken(currentUser,from,navigate)
+     setLoading(false)
       
     })
     .catch(e => {
@@ -34,8 +39,11 @@ const Login = () => {
     })
   }
   return (
-    <div className=" w-full flex justify-center mt-10">
-      
+    <div className=" w-full flex justify-center my-10 ">
+      {loading && <Loader />}
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <Card className=" md:w-[500px] w-96 text-left">
       <h3 className="text-2xl my-4 text-center text-red-800">Login</h3>
         <form onSubmit={handleLogin} className="flex flex-col gap-4">

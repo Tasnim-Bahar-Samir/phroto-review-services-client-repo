@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import Loader from "../../Components/Loader";
 import Service from "../../Components/Service";
 
@@ -16,7 +17,10 @@ const Services = () => {
   }, []);
   return (
     <div className="w-full ">
-      <h3 className="text-center text-5xl my-3">My Services</h3>
+      <Helmet>
+        <title>Services</title>
+      </Helmet>
+      <h3 className="text-center text-4xl my-3 text-red-800">All Services</h3>
       {loading && <Loader />}
       <div className="grid grid-cols-2 gap-5 my-10 w-full justify-center lg:grid-cols-3">
         {services.map((service) => (

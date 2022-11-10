@@ -44,7 +44,7 @@ const UserContext = ({children}) => {
     }, [])
     
 
-    const userInfo = {user,createUser,userLogin,updateUser,userLogOut,googleLogin}
+    const userInfo = {user,createUser,userLogin,updateUser,userLogOut,googleLogin,loading}
   return (
     <authProvider.Provider value={userInfo}>
         {children}

@@ -1,5 +1,6 @@
 import { Button, Card, Label, TextInput } from "flowbite-react";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
@@ -48,6 +49,9 @@ const EditReview = () => {
     }
   return (
     <div>
+      <Helmet>
+        <title>Review-Edit</title>
+      </Helmet>
       <div className="max-w-sm mx-auto mt-10">
         <Card>
           <form onSubmit={handleEdit} className="flex flex-col gap-4">

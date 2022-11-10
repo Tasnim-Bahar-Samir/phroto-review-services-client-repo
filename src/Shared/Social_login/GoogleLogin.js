@@ -6,7 +6,7 @@ import { authProvider } from '../../contextApi/UserContext'
 import { saveToken } from '../Utilities/saveToken'
 
 const GoogleLogin = () => {
-    const location = useLocation;
+    const location = useLocation();
     const from = location.state?.from?.pathname || '/'
     const navigate = useNavigate()
     const {googleLogin} = useContext(authProvider)

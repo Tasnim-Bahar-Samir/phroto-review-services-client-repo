@@ -1,5 +1,6 @@
 
 import React, { useContext, useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import toast from "react-hot-toast";
 import { FaStar } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
@@ -69,6 +70,9 @@ const ServiceDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Service_Details_Review</title>
+      </Helmet>
       <div className="text-center">
         <ModalShow visible = {visible} setVisible = {setVisible}/>
         <img src={img} className="w-full rounded-xl mt-10 mb-4" alt="" />

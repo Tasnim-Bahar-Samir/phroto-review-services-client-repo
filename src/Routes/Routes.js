@@ -10,6 +10,7 @@ import Myreviwes from "../Pages/Myreviews/Myreviwes";
 import Register from "../Pages/Register/Register";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import Services from "../Pages/Services/Services";
+import PrivateRoutes from "./PrivateRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -52,7 +53,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/addService',
-                element:<AddService/>
+                element:<PrivateRoutes><AddService/></PrivateRoutes>
             }
         ]
     }

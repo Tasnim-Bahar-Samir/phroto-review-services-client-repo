@@ -1,9 +1,10 @@
 .active{
     color: brown;
 }
- a{
+
+a{
     transition: .5s;
- }
-a:hover{
+}
+ul a:hover{
     color: brown;
 }

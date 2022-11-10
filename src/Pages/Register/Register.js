@@ -1,10 +1,14 @@
 import React, { useContext, useState } from 'react'
-import { Button, Card, Label, TextInput } from "flowbite-react";
+import { Card, Label, TextInput } from "flowbite-react";
 import { authProvider } from '../../contextApi/UserContext';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import GoogleLogin from '../../Shared/Social_login/GoogleLogin';
+import { Helmet } from 'react-helmet';
+import { saveToken } from '../../Shared/Utilities/saveToken';
+import Loader from '../../Components/Loader';
 
 const Register = () => {
+  const [loading,setLoading] = useState(false)
   const [error,setError] = useState('')
   const{createUser,updateUser} = useContext(authProvider)
   const location = useLocation()
@@ -26,9 +30,14 @@ const Register = () => {
     createUser(email,password)
     .then(result =>{
       console.log(result.user)
-      updateUserProfile(name,photo)
-      navigate(from,{replace:true})
+      setLoading(true)
+      const currentUser = {
+        email : result.user.email
+      }
 
+     saveToken(currentUser,from,navigate)
+      updateUserProfile(name,photo)
+      setLoading(false)
     })
     .catch(e => console.error(e))
 
@@ -45,7 +54,10 @@ const Register = () => {
   }
   return (
     <div className=" w-full flex justify-center my-10">
-      
+      {loading && <Loader />}
+      <Helmet>
+        <title>Register</title>
+      </Helmet>
       <Card className="md:w-[500px] w-96 text-left">
       <h3 className="text-2xl my-4 text-center text-red-800">Register</h3>
         <form onSubmit={handleRegister} className="flex flex-col gap-4">
