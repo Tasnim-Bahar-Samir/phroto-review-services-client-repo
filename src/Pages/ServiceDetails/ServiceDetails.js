@@ -19,7 +19,7 @@ const ServiceDetails = () => {
   const [refresh,setRefresh] = useState(false)
 
   useEffect(() => {
-    fetch(`http://localhost:5000/reviews?id=${_id}`)
+    fetch(`https://awesome-photography-server.vercel.app/reviews?id=${_id}`)
       .then(res => res.json())
       .then(data =>{
         console.log(data)
@@ -45,7 +45,7 @@ const ServiceDetails = () => {
     console.log(reveiw)
     user?.email ?
   
-    fetch('http://localhost:5000/reviews',{
+    fetch('https://awesome-photography-server.vercel.app/reviews',{
       method:'POST',
       headers:{
         "content-type" : "application/json"
@@ -123,7 +123,7 @@ const ServiceDetails = () => {
           </select>
           </div>
           <button className="block bg-slate-900 px-8 py-2 rounded-md text-white ">
-            Add
+            Add Review
           </button>
         </form>
       </div>

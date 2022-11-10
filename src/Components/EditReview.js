@@ -13,7 +13,7 @@ const EditReview = () => {
     const navigate = useNavigate()
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/reviews/${id}`)
+        fetch(`https://awesome-photography-server.vercel.app/reviews/${id}`)
         .then(res => res.json())
         .then(data => setReview(data.data))
     },[id])
@@ -26,7 +26,7 @@ const EditReview = () => {
             text : e.target.text.value,
             rating: star
         }
-        fetch(`http://localhost:5000/myReviews/${id}`,{
+        fetch(`https://awesome-photography-server.vercel.app/myReviews/${id}`,{
             method:"PATCH",
             headers:{
                 'content-type':'application/json'

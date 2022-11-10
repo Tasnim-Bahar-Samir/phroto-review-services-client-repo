@@ -9,7 +9,7 @@ import RecentWork from "./RecentWork/RecentWork";
 const Home = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/limitedServices")
+    fetch("https://awesome-photography-server.vercel.app/limitedServices")
       .then((res) => res.json())
       .then((data) => setServices(data.data))
       .catch((e) => console.log(e));

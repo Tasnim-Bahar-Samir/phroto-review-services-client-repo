@@ -1,6 +1,6 @@
 
 export const saveToken = (currentUser,from,navigate)=>{
-    fetch('http://localhost:5000/login',{
+    fetch('https://awesome-photography-server.vercel.app/login',{
         method:"POST",
         headers:{
           'content-type' : 'application/json'

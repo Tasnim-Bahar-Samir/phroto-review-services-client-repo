@@ -6,21 +6,32 @@ import Myreview from "../../Components/Myreview";
 import { authProvider } from "../../contextApi/UserContext";
 
 const Myreviwes = () => {
+  const {userLogOut} = useContext(authProvider)
   const { user } = useContext(authProvider);
   const [reviews, setReviews] = useState([]);
   const [refresh,setRefresh] = useState(false)
   useEffect(() => {
-    fetch(`http://localhost:5000/myReviews?email=${user?.email}`,{
+    fetch(`https://awesome-photography-server.vercel.app/myReviews?email=${user?.email}`,{
         headers:{
             authorization : localStorage.getItem('user_token')
         }
     })
-      .then((res) => res.json())
-      .then((data) => setReviews(data.data));
-  }, [user?.email,refresh]);
-
+      .then((res) =>{
+        if(res.status == 401 || res.status == 403){
+          return userLogOut()
+        }
+        return res.json()
+      })
+      .then((data) => {
+        console.log(data)
+        setReviews(data.data)
+        
+      })
+      .catch(e => console.log(e))
+  }, [user?.email,refresh])
+  
   const handleDelete = (id) =>{
-    fetch(`http://localhost:5000/myReviews/${id}`,{
+    fetch(`https://awesome-photography-server.vercel.app/myReviews/${id}`,{
         method:"DELETE"
     })
     .then(res => res.json())

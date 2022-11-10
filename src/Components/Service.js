@@ -10,7 +10,7 @@ const Service = ({ data }) => {
   return (
     <div className="max-w-lg md:h-76 lg:h p-2 border rounded-xl bg-white rounded-tr-2xl hover:shadow-lg">
       
-      <div className="">
+      <div className="text-center">
         <PhotoProvider>
           <PhotoView src={img}>
           <img src={img} alt="" className="rounded-xl mb-2 md:h-52 w-full " />
@@ -24,9 +24,9 @@ const Service = ({ data }) => {
         <p className="font-normal text-gray-700 dark:text-gray-400 w-full">
           {details.length > 100 ? details.slice(0, 99) + "..." : details}
         </p>
-        <div className="">
+        <div className="w-full ">
           <Link to={`/details/${_id}`}>
-            <button  className="flex items-center my-2 bg-red-800 text-white px-4 py-2 rounded-sm">
+            <button  className="justify-center flex items-center my-4 bg-red-800 text-white w-2/3 px-4 py-2 rounded-sm mx-auto">
                 Details <FaArrowRight />
             </button>
           </Link>
