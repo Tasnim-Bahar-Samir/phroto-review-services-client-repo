@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/myReviews',
-                element:<Myreviwes/>
+                element:<PrivateRoutes><Myreviwes/></PrivateRoutes>
             },
             {
                 path:'/myReviews/edit/:id',
